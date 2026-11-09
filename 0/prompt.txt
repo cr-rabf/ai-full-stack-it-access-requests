@@ -1,0 +1,13 @@
+read through all docs in the ai-full-stack-it-access-requests directory. Create a plan to build the application necessary to complete the task in the CHALLENGE.md file. Listed in the CHALLENGE.md file are the location of hte requirements, office-policy, record format in JSON, etc.
+
+---
+
+for future refernce, save this plan to a .md file in the repository
+
+---
+
+exit plan mode
+
+---
+
+Crete the implementation_plan.md
