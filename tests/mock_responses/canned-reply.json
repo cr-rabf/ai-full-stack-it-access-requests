@@ -1,0 +1,5 @@
+{
+  "response_source": "mock",
+  "note": "A canned model reply for the starter test. Add one file per case of your test plan beside it.",
+  "output_text": "This is a canned reply. No model was called."
+}
