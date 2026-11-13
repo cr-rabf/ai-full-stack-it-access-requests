@@ -1,0 +1,5 @@
+{
+  "status": "completed",
+  "output_text": "{\"request_id\": \"IT-019\", \"request_date\": \"2026-10-22\", \"kind\": \"change\", \"requester\": \"Sara Ahmed\", \"team\": \"Customer Operations\", \"system\": \"Beacon\", \"environment\": \"production\", \"permission\": \"read\", \"business_purpose\": \"reviewing the daily exception report\", \"start_date\": \"2026-10-28\", \"end_date\": \"2026-11-04\", \"manager\": \"Elena Park\", \"supporting_quotes\": [\"IT-019\", \"2026-10-22\", \"change my current Beacon access\", \"Sara Ahmed\", \"Customer Operations\", \"Beacon\", \"production\", \"read\", \"reviewing the daily exception report\", \"2026-10-28\", \"2026-11-04\", \"Elena Park\", \"from write to read\"], \"issues\": []}",
+  "refusal": null
+}

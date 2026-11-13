@@ -1,0 +1,25 @@
+{
+  "replies": {
+    "IT-001.json": "corpus-001.json",
+    "IT-002.json": "corpus-002.json",
+    "IT-003.json": "corpus-003.json",
+    "IT-004.json": "corpus-004.json",
+    "IT-005.json": "corpus-005.json",
+    "IT-006.json": "corpus-006.json",
+    "IT-007.json": "corpus-007.json",
+    "IT-008.json": "corpus-008.json",
+    "IT-009.json": "corpus-009.json",
+    "IT-010.json": "corpus-010.json",
+    "IT-011.json": "corpus-011.json",
+    "IT-012.json": "corpus-012.json",
+    "IT-013.json": "corpus-013.json",
+    "IT-014.json": "corpus-014.json",
+    "IT-015.json": "corpus-015.json",
+    "IT-016.json": "corpus-016.json",
+    "IT-017.json": "corpus-017.json",
+    "IT-018.json": "corpus-018.json",
+    "IT-019.json": "corpus-019.json",
+    "IT-020.json": "corpus-020.json"
+  },
+  "scripts": {}
+}

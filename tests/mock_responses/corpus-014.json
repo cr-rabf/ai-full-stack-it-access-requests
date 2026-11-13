@@ -1,0 +1,5 @@
+{
+  "status": "completed",
+  "output_text": "{\"request_id\": \"IT-014\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Lucas Brown\", \"team\": \"Sales Operations\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"demo of the new territory report for sales leads\", \"start_date\": \"2026-11-05\", \"end_date\": \"2026-11-02\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"IT-014\", \"2026-10-22\", \"New read access\", \"Lucas Brown\", \"Sales Operations\", \"Atlas\", \"staging\", \"read\", \"demo of the new territory report for sales leads\", \"2026-11-05\", \"2026-11-02\", \"Priya Shah\", \"Start date 2026-11-05. End date 2026-11-02.\"], \"issues\": [\"start_date is after end_date.\"]}",
+  "refusal": null
+}
