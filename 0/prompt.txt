@@ -1,0 +1,48 @@
+<environment_context>
+  <cwd>/home/user/ai-full-stack-it-access-requests</cwd>
+  <shell>bash</shell>
+  <current_date>2026-11-13</current_date>
+  <timezone>Etc/UTC</timezone>
+  <filesystem><workspace_roots><root>/home/user/ai-full-stack-it-access-requests</root></workspace_roots><permission_profile type="managed"><file_system type="restricted"><entry access="read"><special>:root</special></entry><entry access="write"><path>/home/user/ai-full-stack-it-access-requests</path></entry><entry access="write"><special>:slash_tmp</special></entry><entry access="write"><special>:tmpdir</special></entry><entry access="read"><path>/home/user/ai-full-stack-it-access-requests/.git</path></entry><entry access="read"><path>/home/user/ai-full-stack-it-access-requests/.agents</path></entry><entry access="read"><path>/home/user/ai-full-stack-it-access-requests/.codex</path></entry><entry access="read"><path>/home/user/ai-full-stack-it-access-requests/.aws</path></entry></file_system></permission_profile></filesystem>
+</environment_context>
+
+---
+
+build planing/plan.md in its step order. For each step, first write the test the plan names, run it and show it failing, then stop; after you commit the failing test (Test first: <step>), write the code until it passes, then stop again so you commit it (Step <n>: <step>).
+Every test uses mock responses saved under tests/mock_responses/, and no test calls the real model or reads API_KEY.
+The expected values in each test are the expected facts of the test plan, not values copied from a run.
+After each step, run the whole test suite and stop if anything fails.
+
+---
+
+commit the first failure
+
+---
+
+per the original request, is the error fixed?
+
+---
+
+do the commit and continue
+
+---
+
+Commit step 2 failures and implement fixes
+
+---
+
+Do the commit and continue
+
+---
+
+Do the commit and continue. For future tests, do the commit, fixes, etc. without stopping.
+
+---
+
+Use those D1-D4 decisions
+
+---
+
+<send_user_message_question_reply>
+[{"answer":"Use these D5 rules","question":"For Step 9’s D5 accuracy rules, may I use the 12 scalar fields for each of the 20 supplied messages plus the authored paraphrase (252 comparisons)? Compare strings exactly, with no case/whitespace/date normalization; a successful explicit null matches only an expected null. A missing document, missing field, invalid extraction, or failed extraction counts as incorrect (all 12 fields for a failed/invalid record), even where null was expected. Report factual differences and unexpected documents separately; ","questionItemId":"[\"request_user_input_async\",\"call_2fe8c88c23024a60bd66f0e8bf0b2c9b\",0]"}]
+</send_user_message_question_reply>
