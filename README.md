@@ -60,6 +60,18 @@ comparing files. Root links are convenient views; generation IDs expose mixed re
 History preserves earlier versions and failures separately. Unchanged input/settings
 reuse completed errors as well as successes; explicit retry always creates an attempt.
 
-Accuracy evaluation and its exact command will be added in Step 9 using the approved
-D5 rules, frozen before measurement. Mock extraction verifies plumbing and policy;
-it does not measure real model generalization.
+Evaluate the 20 supplied messages and the authored paraphrase with the frozen,
+user-approved D5 rules. Reinstall after source changes to refresh the packaged CLI.
+
+```bash
+python3 -m access_requests --mock-config tests/mock_responses/evaluation-config.json intake materials/paraphrases
+python3 -m access_requests export deliverables
+env -u API_KEY python3 -m access_requests accuracy --records deliverables/extractions.jsonl --report deliverables/accuracy.md
+```
+
+The denominator is 252 (12 scalars × 21 messages). Exact strings and explicit nulls
+are compared without normalization. Failed/invalid records score zero of 12;
+missing fields/documents count as incorrect. Routing and evidence are checked
+separately. Expected fields and rules were committed before scorer implementation.
+Mock extraction verifies plumbing and policy; it does not measure real model
+generalization. Full details are in [accuracy.md](deliverables/accuracy.md).

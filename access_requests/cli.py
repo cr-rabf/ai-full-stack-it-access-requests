@@ -50,6 +50,13 @@ def parser():
     history.add_argument("--document")
     export = commands.add_parser("export")
     export.add_argument("destination", type=Path)
+    accuracy = commands.add_parser("accuracy")
+    accuracy.add_argument("--records", type=Path, default=Path("deliverables/extractions.jsonl"))
+    accuracy.add_argument("--expected", type=Path, default=Path("deliverables/expected-fields.json"))
+    accuracy.add_argument("--rules", type=Path, default=Path("deliverables/accuracy-rules.json"))
+    accuracy.add_argument("--sources", type=Path, default=Path("materials/requests"))
+    accuracy.add_argument("--paraphrase", type=Path, default=Path("materials/paraphrases/IT-021.json"))
+    accuracy.add_argument("--report", type=Path)
     return result
 
 
@@ -117,6 +124,19 @@ def schedule(store, attempts, provider, args):
 def main(argv=None):
     args = parser().parse_args(argv)
     try:
+        if args.command == "accuracy":
+            from .accuracy import score_records, write_report
+            records = [json.loads(line) for line in args.records.read_text().splitlines() if line.strip()]
+            expected = json.loads(args.expected.read_text())["records"]
+            rules = json.loads(args.rules.read_text())
+            paths = sorted(args.sources.glob("*.json")) + [args.paraphrase]
+            documents = {path.name: read_export(path) for path in paths}
+            output = score_records(records, expected, documents, rules)
+            if args.report:
+                write_report(args.report, output, expected, args.expected, args.rules)
+            print(json.dumps(output, indent=2))
+            return int(bool(output["factual_errors"] or output["unexpected_documents"]
+                            or output["routing_errors"] or output["evidence_errors"]))
         store = Store(args.db)
         if args.command == "queue":
             output = store.current()
