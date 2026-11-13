@@ -38,7 +38,7 @@ class MockProviderContract(unittest.TestCase):
         ):
             patcher.start()
             self.addCleanup(patcher.stop)
-        from access_requests.mock_provider import MockProvider
+        from src.mock_provider import MockProvider
 
         self.provider_class = MockProvider
         self.message = json.loads(

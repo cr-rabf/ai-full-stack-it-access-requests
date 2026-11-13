@@ -23,7 +23,7 @@ def positive(value):
 
 
 def parser():
-    result = argparse.ArgumentParser(description="Prepare IT access requests for human review")
+    result = argparse.ArgumentParser(prog="access_request", description="Prepare IT access requests for human review")
     result.add_argument("--db", default=".access-requests/state.sqlite3")
     result.add_argument("--mock-config", type=Path)
     result.add_argument("--model", default="claude-sonnet-5-5")
@@ -96,7 +96,7 @@ def execute_attempt(store, attempt, provider, args):
                         arguments.extend([f"--{flag}", str(path.resolve())])
                 arguments.extend(["retry", "--document", attempt.document.document_id])
                 result["retry_arguments"] = arguments
-                result["error"] = result["error"].split(". Retry:", 1)[0] + ". Retry: access-requests " + shlex.join(arguments)
+                result["error"] = result["error"].split(". Retry:", 1)[0] + ". Retry: access_request " + shlex.join(arguments)
             result = store.complete(attempt, result)
             if (result.get("error_kind") not in ("timeout", "unavailable", "rate_limit")
                     or index + 1 == args.attempts):
@@ -206,5 +206,5 @@ def main(argv=None):
         return int(isinstance(output, list) and any(row.get("status") == "error" for row in output)
                    and args.command in ("intake", "resume", "retry"))
     except (ValueError, OSError, KeyError) as exc:
-        print(f"access-requests: {exc}", file=sys.stderr)
+        print(f"access_request: {exc}", file=sys.stderr)
         return 2

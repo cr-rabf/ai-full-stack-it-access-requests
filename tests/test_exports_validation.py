@@ -38,9 +38,9 @@ class ExportValidationContract(unittest.TestCase):
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
         self.directory = Path(temporary.name)
-        from access_requests.exports import read_export
-        from access_requests.validation import validate_extraction, validate_and_route
-        from access_requests.mock_provider import MockProvider
+        from src.exports import read_export
+        from src.validation import validate_extraction, validate_and_route
+        from src.mock_provider import MockProvider
 
         self.read_export = read_export
         self.validate = validate_extraction

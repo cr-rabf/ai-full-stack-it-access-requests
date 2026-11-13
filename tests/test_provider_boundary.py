@@ -8,6 +8,7 @@ https://platform.claude.com/docs/en/models/sonnet-5-5/overview
 
 The documented wire contract uses POST /v1/messages, Bearer authorization,
 output_config.format=json_schema and content text blocks. Accept only end_turn;
+thinking and redacted_thinking blocks are excluded from extraction text.
 refusal takes precedence over plausible content; max_tokens is incomplete.
 Sonnet 5.5 does not accept temperature/top_p/top_k. Fixtures are authored examples,
 not recorded provider observations. F001 in the plan defines expected facts.
@@ -67,9 +68,9 @@ class ProviderBoundaryContract(unittest.TestCase):
         ):
             patcher.start()
             self.addCleanup(patcher.stop)
-        from access_requests.exports import read_export
-        from access_requests.provider import ProviderConfig, AnthropicProvider
-        from access_requests.processing import process_batch
+        from src.exports import read_export
+        from src.provider import ProviderConfig, AnthropicProvider
+        from src.processing import process_batch
 
         self.config_class = ProviderConfig
         self.provider_class = AnthropicProvider
@@ -80,7 +81,7 @@ class ProviderBoundaryContract(unittest.TestCase):
                                             "next_action": "inspect"})
         self.logs = io.StringIO()
         handler = logging.StreamHandler(self.logs)
-        logger = logging.getLogger("access_requests")
+        logger = logging.getLogger("src")
         logger.addHandler(handler)
         self.addCleanup(logger.removeHandler, handler)
 
@@ -192,6 +193,53 @@ class ProviderBoundaryContract(unittest.TestCase):
                 if name == "rate_limit":
                     self.assertEqual(failed["retry_after_seconds"], 3)
                 self.assertNotIn(FAKE_SECRET, json.dumps(provider.request_evidence(self.documents[1])))
+
+    def test_T04_thinking_blocks_are_excluded_from_extraction(self):
+        original = saved("provider-complete-001.json")
+        text = original["content"][0]["text"]
+        for thinking in (
+            {"type": "thinking", "thinking": "Authored test summary", "signature": "opaque"},
+            {"type": "thinking", "thinking": "", "signature": "opaque"},
+            {"type": "redacted_thinking", "data": "opaque"},
+        ):
+            with self.subTest(block=thinking["type"], display=thinking.get("thinking")):
+                self.router.reset_mock()
+                reply = deepcopy(original)
+                reply["content"] = [thinking, {"type": "text", "text": text[:40]},
+                                    {"type": "text", "text": text[40:]}]
+                provider = self.provider([{"status_code": 200, "body": reply}])
+                result, = self.run_batch(provider)
+                self.assertIsNone(result["error"])
+                self.assertEqual(result["extraction"], json.loads(text))
+                self.router.assert_called_once_with(json.loads(text))
+                self.assertNotIn("Authored test summary", json.dumps(result) + self.logs.getvalue())
+
+    def test_T07_thinking_does_not_bypass_completion_or_refusal(self):
+        for stop_reason, kind in (("refusal", "refusal"), ("max_tokens", "completion")):
+            with self.subTest(stop_reason=stop_reason):
+                reply = saved("provider-complete-001.json")
+                reply["content"].insert(0, {"type": "thinking", "thinking": "", "signature": "opaque"})
+                reply["stop_reason"] = stop_reason
+                result, = self.run_batch(self.provider([{"status_code": 200, "body": reply}]))
+                self.assert_error(result, self.documents[0], kind)
+                self.router.assert_not_called()
+
+    def test_T07_invalid_blocks_and_thinking_without_text_are_rejected(self):
+        thinking = {"type": "thinking", "thinking": "", "signature": "opaque"}
+        text = saved("provider-complete-001.json")["content"][0]
+        for blocks in (
+            [], [thinking], [{"type": "redacted_thinking", "data": "opaque"}],
+            [None, text], [{"type": "tool_use"}, text], [{"type": "text", "text": None}],
+            [{"type": "thinking", "thinking": 1, "signature": "opaque"}, text],
+            [{"type": "thinking", "thinking": ""}, text],
+            [{"type": "redacted_thinking", "data": None}, text],
+        ):
+            with self.subTest(blocks=blocks):
+                reply = saved("provider-complete-001.json")
+                reply["content"] = blocks
+                result, = self.run_batch(self.provider([{"status_code": 200, "body": reply}]))
+                self.assert_error(result, self.documents[0], "completion")
+                self.router.assert_not_called()
 
     def test_T06_refusal_overrides_plausible_content(self):
         provider = self.provider(["provider-refusal.json"])

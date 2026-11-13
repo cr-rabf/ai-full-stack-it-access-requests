@@ -41,7 +41,7 @@ def process_batch(documents, provider, router):
             result["extraction"] = extraction
             result["response_source"] = reply["response_source"]
         except ProviderFailure as exc:
-            retry = f"access-requests retry --document {shlex.quote(document.document_id)}"
+            retry = f"access_request retry --document {shlex.quote(document.document_id)}"
             result.update(status="error", owner="IT Service Desk", next_action="retry-extraction",
                           error_kind=exc.kind, error=f"{document.document_id}: {exc}. Retry: {retry}")
             if exc.retry_after_seconds is not None:

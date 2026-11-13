@@ -23,10 +23,10 @@ def processing_settings(provider):
     return {
         "provider": provider.provenance() if hasattr(provider, "provenance") else {"provider": "mock"},
         "response_source": getattr(provider, "response_source", "mock"),
-        "prompt_sha256": digest(getattr(provider, "prompt_path", ROOT / "access_requests/extraction_prompt.txt")),
+        "prompt_sha256": digest(getattr(provider, "prompt_path", ROOT / "src/extraction_prompt.txt")),
         "schema_sha256": digest(getattr(provider, "schema_path", ROOT / "snapshot.schema.json")),
         "policy_sha256": digest(getattr(provider, "policy_path", ROOT / "materials/office-policy.md")),
-        "routing_sha256": digest(ROOT / "access_requests/review.py"),
+        "routing_sha256": digest(ROOT / "src/review.py"),
     }
 
 

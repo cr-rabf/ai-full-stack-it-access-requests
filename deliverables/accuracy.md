@@ -21,7 +21,7 @@ Frozen rules SHA-256: `81c60a5c9a65683ebfbe94f0f5093082633de5c9120c12d7b643a11fc
 Reproduce from the repository root after mocked intake of the corpus and paraphrase:
 
 ```bash
-env -u API_KEY python3 -m access_requests accuracy --records deliverables/extractions.jsonl --report deliverables/accuracy.md
+env -u API_KEY python3 -m access_request accuracy --records deliverables/extractions.jsonl --report deliverables/accuracy.md
 ```
 
 Expected fields below were transferred from the independent F001–F021 source ledger before scorer

@@ -17,7 +17,7 @@ class AccuracyContract(unittest.TestCase):
 
     def setUp(self):
         self.setUpGuards()
-        from access_requests.accuracy import score_records
+        from src.accuracy import score_records
         self.score_records = score_records
         self.expected = json.loads((ROOT / "deliverables/expected-fields.json").read_text())["records"]
         self.rules = json.loads((ROOT / "deliverables/accuracy-rules.json").read_text())

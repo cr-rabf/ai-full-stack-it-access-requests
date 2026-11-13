@@ -16,16 +16,19 @@ Process the 20 supplied messages with saved mocks, inspect progress and history,
 resume unfinished work, retry one document, and export a consistent snapshot:
 
 ```bash
-.venv/bin/access-requests --mock-config tests/mock_responses/corpus-config.json intake materials/requests --workers 4
-.venv/bin/access-requests queue
-.venv/bin/access-requests pending
-.venv/bin/access-requests history --document IT-002.json
-.venv/bin/access-requests --mock-config tests/mock_responses/corpus-config.json resume
-.venv/bin/access-requests --mock-config tests/mock_responses/corpus-config.json retry --document IT-002.json
-.venv/bin/access-requests export deliverables
+.venv/bin/access_request --mock-config tests/mock_responses/corpus-config.json intake materials/requests --workers 4
+.venv/bin/access_request queue
+.venv/bin/access_request pending
+.venv/bin/access_request history --document IT-002.json
+.venv/bin/access_request --mock-config tests/mock_responses/corpus-config.json resume
+.venv/bin/access_request --mock-config tests/mock_responses/corpus-config.json retry --document IT-002.json
+.venv/bin/access_request export deliverables
 ```
 
-Every command also works as `python3 -m access_requests` from the repository root.
+Every command also works as `python3 -m access_request` from the repository root.
+After installation, `.venv/bin/python -m access_request` also works from other
+directories. The implementation remains in `src/`; `access_request.py` is the public
+entry point. Re-run the installation command to update an existing installation.
 Use the same `--db PATH` before each command to select another shared database;
 the default is `.access-requests/state.sqlite3`. Inspect commands can run in a second
 terminal during intake. Failed extraction returns exit code 1, command errors 2,
@@ -41,7 +44,7 @@ See [provider contract](docs/provider-contract.md) for verified documentation li
 request settings, prompt/schema paths and response handling.
 
 ```bash
-python3 -m access_requests --model claude-sonnet-5-5 intake materials/requests --workers 4 --attempts 3 --backoff 1 --max-backoff 30
+python3 -m access_request --model claude-sonnet-5-5 intake materials/requests --workers 4 --attempts 3 --backoff 1 --max-backoff 30
 env -u API_KEY python3 -m unittest discover -s tests
 ```
 
@@ -64,9 +67,9 @@ Evaluate the 20 supplied messages and the authored paraphrase with the frozen,
 user-approved D5 rules. Reinstall after source changes to refresh the packaged CLI.
 
 ```bash
-python3 -m access_requests --mock-config tests/mock_responses/evaluation-config.json intake materials/paraphrases
-python3 -m access_requests export deliverables
-env -u API_KEY python3 -m access_requests accuracy --records deliverables/extractions.jsonl --report deliverables/accuracy.md
+python3 -m access_request --mock-config tests/mock_responses/evaluation-config.json intake materials/paraphrases
+python3 -m access_request export deliverables
+env -u API_KEY python3 -m access_request accuracy --records deliverables/extractions.jsonl --report deliverables/accuracy.md
 ```
 
 The denominator is 252 (12 scalars × 21 messages). Exact strings and explicit nulls
@@ -79,7 +82,7 @@ generalization. Full details are in [accuracy.md](deliverables/accuracy.md).
 Verify the committed handover artifacts, or repeat the isolated installed walkthrough:
 
 ```bash
-env -u API_KEY python3 -m access_requests.verification
+env -u API_KEY python3 -m src.verification
 env -u API_KEY python3 tools/walkthrough.py
 ```
 

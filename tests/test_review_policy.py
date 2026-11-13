@@ -31,9 +31,9 @@ class ReviewPolicyContract(unittest.TestCase):
                         mock.patch.object(os, "environ", NoCredentials())):
             patcher.start()
             self.addCleanup(patcher.stop)
-        from access_requests.exports import read_export
-        from access_requests.mock_provider import MockProvider
-        from access_requests.review import intake, route
+        from src.exports import read_export
+        from src.mock_provider import MockProvider
+        from src.review import intake, route
         self.read_export = read_export
         self.provider_class = MockProvider
         self.intake = intake

@@ -9,9 +9,9 @@ attempt ownership lock, not a database or publication lock.
 Inspect while intake is running:
 
 ```
-python3 -m access_requests --db .access-requests/state.sqlite3 queue
-python3 -m access_requests --db .access-requests/state.sqlite3 pending
-python3 -m access_requests --db .access-requests/state.sqlite3 history --document IT-002.json
+python3 -m access_request --db .access-requests/state.sqlite3 queue
+python3 -m access_request --db .access-requests/state.sqlite3 pending
+python3 -m access_request --db .access-requests/state.sqlite3 history --document IT-002.json
 ```
 
 Resume uses saved source bytes and original settings. It skips attempts whose OS
@@ -20,8 +20,8 @@ the locks; an orphan remains pending until explicitly resumed. A resume with cha
 settings is rejected; explicitly retry to create an attempt with new settings.
 
 ```
-python3 -m access_requests --mock-config tests/mock_responses/cli-delayed.json resume
-python3 -m access_requests --mock-config tests/mock_responses/cli-immediate.json retry --document IT-002.json
+python3 -m access_request --mock-config tests/mock_responses/cli-delayed.json resume
+python3 -m access_request --mock-config tests/mock_responses/cli-immediate.json retry --document IT-002.json
 ```
 
 `intake`, `resume`, and `retry` accept `--workers`, `--attempts`, `--backoff`, and

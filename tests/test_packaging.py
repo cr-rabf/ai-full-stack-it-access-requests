@@ -26,6 +26,7 @@ class PackagingContract(unittest.TestCase):
         prefix = self.directory / "venv"
         self.assertTrue((ROOT / "tools/install.py").is_file(), "CLI installer is missing")
         self.assertTrue((ROOT / "requirements.lock").is_file(), "Dependency lockfile is missing")
+        self.assertTrue((ROOT / "access_request.py").is_file(), "access_request entry point is missing")
         subprocess.run([sys.executable, "-m", "venv", "--without-pip", str(prefix)], check=True,
                        env={}, capture_output=True, timeout=20)
         python = prefix / "bin/python"
@@ -61,6 +62,22 @@ class PackagingContract(unittest.TestCase):
             raw = (ROOT / "materials/requests" / record["document_id"]).read_bytes()
             self.assertEqual(record["source_sha256"], hashlib.sha256(raw).hexdigest())
         self.assertEqual(len(cli("queue")), 20)
+        # Use the installed module from outside the repository, with cwd and
+        # PYTHONPATH excluded from Python's import search. Guards still prohibit
+        # network connections and API_KEY reads in the child process.
+        module = subprocess.run([
+            str(python), "-I", str(ROOT / "tests/cli_runner.py"), "--installed-module",
+            "--db", str(self.directory / "packaged.sqlite3"), "queue",
+        ], cwd=self.directory, env={}, capture_output=True, text=True, timeout=15)
+        self.assertEqual(module.returncode, 0, module.stderr)
+        self.assertEqual(len(json.loads(module.stdout)), 20)
+        named_launcher = prefix / "bin/access_request"
+        named = subprocess.run([
+            str(python), str(ROOT / "tests/cli_runner.py"), "--installed", str(named_launcher),
+            "--db", str(self.directory / "packaged.sqlite3"), "queue",
+        ], cwd=self.directory, env={}, capture_output=True, text=True, timeout=15)
+        self.assertEqual(named.returncode, 0, named.stderr)
+        self.assertEqual(json.loads(named.stdout), json.loads(module.stdout))
         self.assertEqual(cli("pending"), [])
         rerun = cli("intake", ROOT / "materials/requests")
         self.assertEqual([r["attempt_id"] for r in records], [r["attempt_id"] for r in rerun])

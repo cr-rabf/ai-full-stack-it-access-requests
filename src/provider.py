@@ -51,7 +51,7 @@ class AnthropicProvider:
         self.config = config or ProviderConfig()
         self.transport = transport
         self.credential_loader = credential_loader
-        self.prompt_path = Path(prompt_path or ROOT / "access_requests/extraction_prompt.txt")
+        self.prompt_path = Path(prompt_path or ROOT / "src/extraction_prompt.txt")
         self.schema_path = Path(schema_path or ROOT / "snapshot.schema.json")
         self.policy_path = Path(policy_path or ROOT / "materials/office-policy.md")
         self.response_source = getattr(transport, "response_source", f"anthropic/{self.config.model}")
@@ -121,10 +121,25 @@ class AnthropicProvider:
                 or envelope.get("stop_reason") != "end_turn"):
             raise ProviderFailure("completion", "Provider response did not complete normally")
         blocks = envelope.get("content")
-        if (not isinstance(blocks, list) or not blocks
-                or any(not isinstance(block, dict) or block.get("type") != "text"
-                       or not isinstance(block.get("text"), str) for block in blocks)):
+        if not isinstance(blocks, list) or not blocks:
             raise ProviderFailure("completion", "Provider response has invalid content blocks")
+        texts = []
+        for block in blocks:
+            if not isinstance(block, dict):
+                raise ProviderFailure("completion", "Provider response has invalid content blocks")
+            block_type = block.get("type")
+            if block_type == "text" and isinstance(block.get("text"), str):
+                texts.append(block["text"])
+            elif (block_type == "thinking" and isinstance(block.get("thinking"), str)
+                  and isinstance(block.get("signature"), str)):
+                # Thinking may be summarized or omitted (an empty string).
+                continue
+            elif block_type == "redacted_thinking" and isinstance(block.get("data"), str):
+                continue
+            else:
+                raise ProviderFailure("completion", "Provider response has invalid content blocks")
+        if not texts:
+            raise ProviderFailure("completion", "Provider response has no text content")
         return {"status": "completed", "refusal": None,
-                "output_text": "".join(block["text"] for block in blocks),
+                "output_text": "".join(texts),
                 "response_source": self.response_source}

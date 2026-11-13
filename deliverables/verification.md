@@ -8,8 +8,8 @@ Intended checks and reproducible commands:
 ```bash
 env -u API_KEY python3 -m unittest discover -s tests -v
 env -u API_KEY python3 tools/walkthrough.py --output deliverables/c1-results.json
-env -u API_KEY python3 -m access_requests accuracy --records deliverables/extractions.jsonl
-env -u API_KEY python3 -m access_requests.verification
+env -u API_KEY python3 -m access_request accuracy --records deliverables/extractions.jsonl
+env -u API_KEY python3 -m src.verification
 git diff --check
 ```
 
@@ -18,6 +18,10 @@ T02–T03 compare original-byte hashes, export identity, exact decoded quotes an
 the supplied schema, including the 200-word boundary. T04–T07 compare the implemented
 HTTP request and handling against a fake transport: exceptions, refusal, cutoff,
 malformed JSON, invalid schema and invalid evidence never reach routing.
+Three provider regression checks cover summarized, omitted and redacted thinking
+blocks alongside extraction text; refusal and truncation with thinking present;
+and rejection of malformed blocks, unsupported block types and thinking-only replies.
+Only text blocks reach extraction validation and routing; thinking is not logged.
 T08–T15 compare source-ledger facts and ordered human-review routes. T16 rejects
 incomplete or invented expectations for independently authored wording.
 T17–T21 compare reuse, changed-source hashes, current attempts and retained history,
@@ -28,11 +32,15 @@ T25 installs offline and processes the full corpus plus 400/2,000 authored mock
 messages. T26 checks the frozen D5 denominator and known wrong/null/missing/failed
 output counts. T27 compares current artifacts, schema, hashes, history links,
 redacted request evidence, provenance and repeatable mocked results.
+Four additional R-27 checks verify source-expected dates across all 21 messages,
+valid leap days and calendar boundaries, 51 invalid date cases flagged for
+clarification, and date-order issues separately from date format. Invalid date
+values remain visible for human review.
 
-Observed final verification: all 44 tests passed in 32.662 seconds on Python 3.12.3/Linux.
+Observed latest verification: all 51 tests passed in 34.793 seconds on Python 3.12.3/Linux.
 The full command output is saved in `planning/test-run.txt`. The T25
 run used the saved `load-owner.json` template, replacing only authored request IDs,
-with four workers: 400 messages took 4.121 seconds; 2,000 took 20.239 seconds.
+with four workers: 400 messages took 4.667 seconds; 2,000 took 21.091 seconds.
 These measurements are local mock timings, not provider throughput estimates.
 The committed 21-record mock snapshot scored 252/252 scalar matches, with no
 factual, routing or evidence differences. Expectations/rules were frozen in
@@ -76,4 +84,7 @@ Observed repairs: implementation addressed the missing modules/capabilities show
 by each Test first commit. Handover review found that retry guidance omitted custom
 database/provider settings; a failing copy-and-execute regression check preceded
 the fix. Errors now retain executable retry arguments for the original state and
-provider configuration. No live-provider factual-error repair is claimed.
+provider configuration. Provider review also found that valid thinking blocks were
+rejected as completion errors. A failing regression test preceded the repair: the
+adapter now accepts thinking blocks and extracts only text while preserving refusal,
+completion, schema and evidence checks. No live-provider factual-error repair is claimed.

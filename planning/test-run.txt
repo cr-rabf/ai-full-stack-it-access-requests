@@ -5,6 +5,10 @@ test_T26_missing_invalid_and_failed_records_count_all_twelve_incorrect (test_acc
 test_T22_separate_cli_inspects_progress_while_another_request_waits (test_cli_operations.OperationsContract.test_T22_separate_cli_inspects_progress_while_another_request_waits) ... ok
 test_T23_bounded_retry_outage_and_processing_identity (test_cli_operations.OperationsContract.test_T23_bounded_retry_outage_and_processing_identity) ... ok
 test_T24_process_death_resume_and_atomic_publication_recovery (test_cli_operations.OperationsContract.test_T24_process_death_resume_and_atomic_publication_recovery) ... ok
+test_R27_all_corpus_dates_match_source_expectations_and_calendar_format (test_dates.DateContract.test_R27_all_corpus_dates_match_source_expectations_and_calendar_format) ... ok
+test_R27_each_invalid_format_or_calendar_date_is_flagged_in_every_date_field (test_dates.DateContract.test_R27_each_invalid_format_or_calendar_date_is_flagged_in_every_date_field) ... ok
+test_R27_reversed_dates_have_valid_format_but_separate_order_issue (test_dates.DateContract.test_R27_reversed_dates_have_valid_format_but_separate_order_issue) ... ok
+test_R27_valid_leap_days_and_calendar_boundaries_are_accepted (test_dates.DateContract.test_R27_valid_leap_days_and_calendar_boundaries_are_accepted) ... ok
 test_T16_paraphrase_and_independent_expectation_validation (test_expectation_checker.ExpectationCheckerContract.test_T16_paraphrase_and_independent_expectation_validation) ... ok
 test_T02_exact_200_word_export_and_response (test_exports_validation.ExportValidationContract.test_T02_exact_200_word_export_and_response) ... ok
 test_T02_malformed_exports_are_rejected (test_exports_validation.ExportValidationContract.test_T02_malformed_exports_are_rejected) ... ok
@@ -21,9 +25,12 @@ test_T01_unknown_document_does_not_invent_a_reply (test_mock_provider.MockProvid
 test_T25_clean_install_corpus_retry_export_and_loads (test_packaging.PackagingContract.test_T25_clean_install_corpus_retry_export_and_loads) ... ok
 test_T04_endpoint_model_settings_are_configurable_and_preserved (test_provider_boundary.ProviderBoundaryContract.test_T04_endpoint_model_settings_are_configurable_and_preserved) ... ok
 test_T04_supported_request_and_source_grounded_candidate (test_provider_boundary.ProviderBoundaryContract.test_T04_supported_request_and_source_grounded_candidate) ... ok
+test_T04_thinking_blocks_are_excluded_from_extraction (test_provider_boundary.ProviderBoundaryContract.test_T04_thinking_blocks_are_excluded_from_extraction) ... ok
 test_T05_service_failures_do_not_block_other_documents (test_provider_boundary.ProviderBoundaryContract.test_T05_service_failures_do_not_block_other_documents) ... ok
 test_T06_refusal_overrides_plausible_content (test_provider_boundary.ProviderBoundaryContract.test_T06_refusal_overrides_plausible_content) ... ok
 test_T07_incomplete_malformed_schema_and_quote_failures (test_provider_boundary.ProviderBoundaryContract.test_T07_incomplete_malformed_schema_and_quote_failures) ... ok
+test_T07_invalid_blocks_and_thinking_without_text_are_rejected (test_provider_boundary.ProviderBoundaryContract.test_T07_invalid_blocks_and_thinking_without_text_are_rejected) ... ok
+test_T07_thinking_does_not_bypass_completion_or_refusal (test_provider_boundary.ProviderBoundaryContract.test_T07_thinking_does_not_bypass_completion_or_refusal) ... ok
 test_T07_transport_interruption_is_explicit (test_provider_boundary.ProviderBoundaryContract.test_T07_transport_interruption_is_explicit) ... ok
 test_T08_complete_request (test_review_policy.ReviewPolicyContract.test_T08_complete_request) ... ok
 test_T09_missing_and_relative_dates_precede_risk (test_review_policy.ReviewPolicyContract.test_T09_missing_and_relative_dates_precede_risk) ... ok
@@ -44,8 +51,8 @@ test_T21_later_batch_omission_keeps_earlier_document (test_storage.StorageContra
 test_T27_artifacts_redaction_and_reproducible_mock_results (test_verification.VerificationContract.test_T27_artifacts_redaction_and_reproducible_mock_results) ... ok
 
 ----------------------------------------------------------------------
-Ran 44 tests in 32.662s
+Ran 51 tests in 34.793s
 
 OK
-T25 observed: 400 saved-mock messages, workers=4, 4.121s; not provider throughput.
-T25 observed: 2000 saved-mock messages, workers=4, 20.239s; not provider throughput.
+T25 observed: 400 saved-mock messages, workers=4, 4.667s; not provider throughput.
+T25 observed: 2000 saved-mock messages, workers=4, 21.091s; not provider throughput.

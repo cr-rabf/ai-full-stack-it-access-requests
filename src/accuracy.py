@@ -94,7 +94,7 @@ def write_report(path, report, expected, expected_path, rules_path):
         f"Unexpected documents: {json.dumps(report['unexpected_documents'])}.", "",
         f"Frozen expectation SHA-256: `{expected_hash}`.", f"Frozen rules SHA-256: `{rules_hash}`.", "",
         "Reproduce from the repository root after mocked intake of the corpus and paraphrase:", "",
-        "```bash", "env -u API_KEY python3 -m access_requests accuracy --records deliverables/extractions.jsonl --report deliverables/accuracy.md", "```", "",
+        "```bash", "env -u API_KEY python3 -m access_request accuracy --records deliverables/extractions.jsonl --report deliverables/accuracy.md", "```", "",
         "Expected fields below were transferred from the independent F001–F021 source ledger before scorer",
         "implementation. [expected-fields.json](expected-fields.json) contains every exact evidence quote,",
         "source hash and expected route. [accuracy-rules.json](accuracy-rules.json) contains the frozen rules.",

@@ -19,8 +19,8 @@ class VerificationContract(unittest.TestCase):
     tearDown = test_review_policy.ReviewPolicyContract.tearDown
 
     def test_T27_artifacts_redaction_and_reproducible_mock_results(self):
-        from access_requests.verification import verify_artifacts
-        from access_requests.provider import AnthropicProvider
+        from src.verification import verify_artifacts
+        from src.provider import AnthropicProvider
 
         report = verify_artifacts(ROOT)
         self.assertTrue(report["passed"], report)
@@ -56,7 +56,7 @@ class VerificationContract(unittest.TestCase):
 
         # Retry guidance must retain a nondefault database and mocked provider;
         # otherwise copying it would target different state or a real model.
-        from access_requests.cli import main
+        from src.cli import main
         with tempfile.TemporaryDirectory() as directory:
             arguments = ["--db", str(Path(directory) / "state.sqlite3"), "--mock-config",
                          str(MOCKS / "cli-outage.json"), "intake", str(ROOT / "materials/requests/IT-002.json")]

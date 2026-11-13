@@ -19,7 +19,7 @@ class ExpectationCheckerContract(unittest.TestCase):
     assert_route = test_review_policy.ReviewPolicyContract.assert_route
 
     def test_T16_paraphrase_and_independent_expectation_validation(self):
-        from access_requests.expectations import check_expected
+        from src.expectations import check_expected
 
         expected = json.loads((ROOT / "tests/expectations/paraphrase-021.json").read_text())
         document = self.read_export(ROOT / "tests/fixtures/paraphrase-021-export.json")

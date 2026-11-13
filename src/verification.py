@@ -44,10 +44,10 @@ def verify_artifacts(root):
     for record in records:
         if (record["document_id"], record["attempt_id"], record["source_sha256"]) not in historical:
             errors.append(f"Missing current attempt in history: {record['document_id']}")
-        for key, path in (("prompt_sha256", root / "access_requests/extraction_prompt.txt"),
+        for key, path in (("prompt_sha256", root / "src/extraction_prompt.txt"),
                           ("schema_sha256", root / "snapshot.schema.json"),
                           ("policy_sha256", root / "materials/office-policy.md"),
-                          ("routing_sha256", root / "access_requests/review.py")):
+                          ("routing_sha256", root / "src/review.py")):
             if record["processing_settings"].get(key) != hashlib.sha256(path.read_bytes()).hexdigest():
                 errors.append(f"Processing provenance differs: {record['document_id']} {key}")
     evidence = json.loads((deliverables / "request-evidence.json").read_text())

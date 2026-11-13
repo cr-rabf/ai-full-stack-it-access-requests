@@ -23,7 +23,7 @@ class StorageContract(unittest.TestCase):
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
         self.directory = Path(temporary.name)
-        from access_requests.storage import Store, processing_settings
+        from src.storage import Store, processing_settings
         self.store_class = Store
         self.settings = processing_settings
         self.store = Store(self.directory / "state.sqlite3")

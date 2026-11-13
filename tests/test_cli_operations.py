@@ -94,7 +94,7 @@ class OperationsContract(unittest.TestCase):
         document = self.source(1)
         baseline = self.store.process(document, self.provider)
         for attribute, source_path in (
-            ("prompt_path", ROOT / "access_requests/extraction_prompt.txt"),
+            ("prompt_path", ROOT / "src/extraction_prompt.txt"),
             ("schema_path", ROOT / "snapshot.schema.json"),
             ("policy_path", ROOT / "materials/office-policy.md"),
         ):
