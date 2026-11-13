@@ -1,0 +1,1 @@
+the requirements for this project have changed. I will create a new plan based on the updated requirements. For now, simply delete the implementation_plan.md. I will prompt for a plan in a future session.
