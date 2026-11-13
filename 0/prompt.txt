@@ -1,0 +1,25 @@
+Read the planning/spec.md and use the plan-from-spec skill on it. Create a planning/plan.md. Do not create any code or tests yet.
+
+---
+
+<send_user_message_question_reply>
+[{"answer":"Keep these decisions open for review","question":"The spec leaves five design rules open. Can you confirm these proposed rules, or provide alternatives: one shared host with local SQLite storage; newest registered attempt controls the current view; durable pending/running/success/error states with recoverable leases; reuse unchanged completed results until an explicit retry or source/model/prompt/schema/policy change; and exact comparison of all 13 scalar fields across 21 messages (273 comparisons), with failed extractions counting as mismatches?","questionItemId":"[\"request_user_input_async\",\"call_68d375653498456fa0d8619c06ac5efb\",0]"}]
+</send_user_message_question_reply>
+
+---
+
+Review the plan.md and ensure each of these things holds true in the doc:
+Every spec line appears in § Coverage with a step that builds it and a test or check that shows it. A spec line Codex left out goes back in.
+The test plan has its own row for each case of docs/requirements.md § Verification: a complete request, missing dates, conflicting details, embedded instructions, provider failure, an unchanged rerun, changed source content. Then the paraphrased request you author, a refusal or interrupted response, and a failed retry after a prior success.
+Each row's input is a real export in materials/requests/ (or the message you wrote), and you opened it and read the message.
+Each expected fact quotes the message words and the policy rule it comes from. Work one row out yourself, from the message and the policy, before you accept Codex's version.
+Each row's mock response is named: a saved reply under tests/mock_responses/, an error, or a cut-off reply. No test calls the real model, and none needs API_KEY.
+The steps put the mock provider first, and each later step names the test written before it.
+
+---
+
+git add planning/plan.md
+
+---
+
+git commit -m "Plan: build steps and test plan"
