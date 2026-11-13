@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "fields": [
+    "request_id",
+    "request_date",
+    "kind",
+    "requester",
+    "team",
+    "system",
+    "environment",
+    "permission",
+    "business_purpose",
+    "start_date",
+    "end_date",
+    "manager"
+  ],
+  "documents": 21,
+  "denominator": 252,
+  "comparison": "exact strings and explicit null; no normalization",
+  "failed_or_invalid_record": "all 12 fields incorrect, including expected nulls",
+  "missing_field": "incorrect; schema-invalid records count all 12 incorrect",
+  "unexpected_documents": "reported separately; denominator unchanged",
+  "routing_and_evidence": "checked separately; outside accuracy denominator",
+  "approval": "D5 rules explicitly accepted by user before scorer implementation"
+}

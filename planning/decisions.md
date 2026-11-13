@@ -20,4 +20,10 @@ Readers comparing queue and extraction files must resolve `current` once and rea
 both files from that immutable generation. Root deliverable links are conveniences;
 records carry generation IDs to expose accidental cross-generation comparisons.
 
-D5 remains open. No corpus accuracy normalization or denominator is adopted here.
+D5 was approved by the user before Step 9: compare all 12 scalar fields for the
+20 supplied messages and the authored paraphrase (252 comparisons), with exact
+strings and explicit nulls and no normalization. Missing documents and failed or
+schema-invalid records receive zero of 12 matches, including expected nulls.
+Unexpected documents are reported separately without changing the denominator.
+Routing and evidence checks are separate. Frozen rules and source-derived values
+are in `deliverables/accuracy-rules.json` and `deliverables/expected-fields.json`.
