@@ -1,0 +1,56 @@
+{
+  "cli_version": "0.13.1",
+  "checkpoint_id": "01M7AZJFZYX6YKCRR5EVCW9HWM",
+  "strategy": "manual-commit",
+  "branch": "main",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "tests/mock_responses/provider-complete-001.json",
+    "tests/mock_responses/provider-cut-off.json",
+    "tests/mock_responses/provider-failures.json",
+    "tests/mock_responses/provider-incomplete-parseable.json",
+    "tests/mock_responses/provider-invalid-envelope.json",
+    "tests/mock_responses/provider-invalid-quote.json",
+    "tests/mock_responses/provider-malformed-json.json",
+    "tests/mock_responses/provider-refusal.json",
+    "tests/mock_responses/provider-schema-invalid.json",
+    "tests/test_provider_boundary.py"
+  ],
+  "sessions": [
+    {
+      "metadata": "/0/metadata.json",
+      "transcript": "/0/full.jsonl",
+      "compact_transcript": "/0/transcript.jsonl",
+      "content_hash": "/0/content_hash.txt",
+      "prompt": "/0/prompt.txt"
+    }
+  ],
+  "token_usage": {
+    "input_tokens": 21158,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 480256,
+    "output_tokens": 5274,
+    "api_call_count": 7,
+    "subagent_tokens_complete": true
+  },
+  "redaction": {
+    "replacements": 24,
+    "layers": {
+      "betterleaks": 0,
+      "connection_string": 0,
+      "credential_key": 0,
+      "credential_value": 4,
+      "credentialed_uri": 0,
+      "entropy": 25,
+      "key_context": 0,
+      "pii": 2,
+      "provider_token": 0,
+      "shell_stdin": 0
+    },
+    "pii": {
+      "EMAIL": 2,
+      "IP": 0,
+      "PHONE": 0
+    }
+  }
+}

@@ -1,0 +1,1 @@
+Do the commit and continue. For future tests, do the commit, fixes, etc. without stopping.
