@@ -1,0 +1,33 @@
+{
+  "timeout": {
+    "exception": "TimeoutError",
+    "message": "Timed out; token={fake_secret}"
+  },
+  "unavailable": {
+    "status_code": 503,
+    "body": {
+      "type": "error",
+      "error": {
+        "type": "overloaded_error",
+        "message": "Unavailable; token={fake_secret}"
+      }
+    }
+  },
+  "rate_limit": {
+    "status_code": 429,
+    "headers": {
+      "retry-after": "3"
+    },
+    "body": {
+      "type": "error",
+      "error": {
+        "type": "rate_limit_error",
+        "message": "Rate limited; token={fake_secret}"
+      }
+    }
+  },
+  "interrupted": {
+    "exception": "InterruptedError",
+    "message": "Interrupted; token={fake_secret}"
+  }
+}
