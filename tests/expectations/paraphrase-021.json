@@ -1,0 +1,35 @@
+{
+  "facts": {
+    "request_id": "IT-021",
+    "request_date": "2026-10-22",
+    "kind": "new",
+    "requester": "Maya Chen",
+    "team": "Analytics",
+    "system": "Atlas",
+    "environment": "staging",
+    "permission": "read",
+    "business_purpose": "check weekly conversion dashboard totals",
+    "start_date": "2026-10-23",
+    "end_date": "2026-11-06",
+    "manager": "Priya Shah"
+  },
+  "evidence": {
+    "request_id": "IT-021",
+    "request_date": "dated 2026-10-22",
+    "kind": "a new request",
+    "requester": "Maya Chen",
+    "team": "Analytics team",
+    "system": "Atlas",
+    "environment": "in staging",
+    "permission": "let me read",
+    "business_purpose": "check weekly conversion dashboard totals",
+    "start_date": "2026-10-23",
+    "end_date": "2026-11-06",
+    "manager": "Priya Shah is my manager"
+  },
+  "route": {
+    "status": "review",
+    "owner": "System Owner",
+    "next_action": "review-request"
+  }
+}
