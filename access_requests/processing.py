@@ -17,7 +17,14 @@ def process_batch(documents, provider, router):
             "extraction": None, "error": None,
         }
         try:
-            reply = provider.extract(document.document_id, document.message)
+            try:
+                reply = provider.extract(document.document_id, document.message)
+            except TimeoutError:
+                raise ProviderFailure("timeout", "Provider timed out") from None
+            except InterruptedError:
+                raise ProviderFailure("interrupted", "Provider request interrupted") from None
+            except RuntimeError:
+                raise ProviderFailure("unavailable", "Provider unavailable") from None
             if reply.get("refusal"):
                 raise ProviderFailure("refusal", "Provider declined extraction")
             if reply.get("status") != "completed":
