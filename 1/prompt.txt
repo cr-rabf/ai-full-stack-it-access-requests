@@ -1,0 +1,25 @@
+Read through the following files: CHALLENGE.md, docs/requirements.md, materials/office-policy.md and snapshot.schema.json. Then create a planning.spec.md. The spec.md should contain a table with 4 columns: ID (R-01, R-02, etc.), Requirement, Source, and Check. The Requirement is one sentence that a test can check. Source is the file and section of the requirement. It quotes the source exactly. Check is how to determine the requirement is met. It can be the test, a file to review, or a commmand. Do not create or invent anything that is not in the files. Do not generate any code.
+
+---
+
+Review the spec.md. List every instance where two readings/interpretations are possible or where a term is not defined.
+
+---
+
+Are there any of these that you would consider showstoppers that must be answered before moving on with further implementation/planning?
+
+---
+
+Create an "Open Questions" section in the spec.md file and add this table to it
+
+---
+
+you created the spec file as planning.spec.md. Instead, create a planning folder and rename the file to spec.md inside the planning directory.
+
+---
+
+git add planning/spec.md
+
+---
+
+git commit -m "Spec: the brief as numbered requirements"
