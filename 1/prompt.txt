@@ -1,0 +1,50 @@
+The repo should look like below. Ensure that what we have matches it. REport the resuts, do not make any changes.
+
+README.md
+docs/
+  requirements.md
+src/
+tests/
+snapshot.schema.json
+deliverables/
+  extractions.jsonl
+  queue.json
+  accuracy.md
+  request-evidence.json
+  verification.md
+
+---
+
+Review the CHALLENGES.md and ensure that we've met all expectations, deliverables, etc.
+
+---
+
+Implement #1
+
+---
+
+Is there any documentation that needs updated to reflect 51 tests?
+
+---
+
+Update the docs
+
+---
+
+run the application one more time before this is commited
+
+---
+
+run a git status
+
+---
+
+stage all changes
+
+---
+
+run git status
+
+---
+
+git commit -m "Validation: each spec line met or not met, with evidence"
