@@ -45,6 +45,10 @@ class MockProvider:
             reason = event.get("message", f"Mock provider error: {event['error']}")
             if event["error"] == "interruption":
                 raise InterruptedError(reason)
+            if event["error"] in ("rate_limit", "timeout"):
+                from .provider import ProviderFailure
+                raise ProviderFailure(event["error"], "Simulated provider service failure",
+                                      event.get("retry_after_seconds"))
             raise RuntimeError(reason)
 
         path = (self.fixtures_dir / event["reply"]).resolve()
