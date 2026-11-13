@@ -75,3 +75,14 @@ missing fields/documents count as incorrect. Routing and evidence are checked
 separately. Expected fields and rules were committed before scorer implementation.
 Mock extraction verifies plumbing and policy; it does not measure real model
 generalization. Full details are in [accuracy.md](deliverables/accuracy.md).
+
+Verify the committed handover artifacts, or repeat the isolated installed walkthrough:
+
+```bash
+env -u API_KEY python3 -m access_requests.verification
+env -u API_KEY python3 tools/walkthrough.py
+```
+
+See [verification.md](deliverables/verification.md) for observed results, operating
+limits and pending facilitator capture/submission checks, and
+[planning/test-run.txt](planning/test-run.txt) for the saved full-suite run.

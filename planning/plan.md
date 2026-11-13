@@ -1,5 +1,11 @@
 # Implementation plan
 
+Implementation record: steps 1–10 are built and verified with saved mock responses.
+The original planning text below is retained for traceability. Its open gates were
+subsequently resolved by the user in [decisions.md](decisions.md); observed results
+and remaining facilitator/submission checks are in
+[verification.md](../deliverables/verification.md) and [test-run.txt](test-run.txt).
+
 ## 1. Choices
 
 - **Runtime:** Python 3.10+ to match `docs/00-prerequisites.md` and the existing unittest starter; lock application dependencies during implementation.

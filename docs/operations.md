@@ -30,6 +30,9 @@ timeouts, unavailability and rate limits. Backoff is exponential, respects numer
 Retry-After and is bounded by max-backoff. Each failed attempt remains in history.
 The scheduler submits at most workers futures; no DB lock spans provider waits.
 Unchanged errors are reused until explicit retry or relevant input/settings change.
+CLI failures include `retry_arguments` preserving the database, mock configuration
+or model/request settings, and custom prompt/schema/policy paths. Pass those
+arguments to the same CLI installation; the human-readable error also shows them.
 
 `export DESTINATION` writes an immutable generation, flushes it, and atomically
 switches the destination's `current` symlink. Resolve that symlink once before

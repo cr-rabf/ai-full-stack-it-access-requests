@@ -4,6 +4,7 @@ import argparse
 from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 import json
 from pathlib import Path
+import shlex
 import sys
 import time
 
@@ -82,6 +83,20 @@ def execute_attempt(store, attempt, provider, args):
     try:
         for index in range(args.attempts):
             result, = intake([attempt.document], provider)
+            if result["error"]:
+                arguments = ["--db", str(Path(args.db).resolve())]
+                if args.mock_config:
+                    arguments.extend(["--mock-config", str(args.mock_config.resolve())])
+                else:
+                    arguments.extend(["--model", args.model, "--endpoint", args.endpoint,
+                                      "--max-tokens", str(args.max_tokens), "--timeout", str(args.timeout)])
+                for flag in ("prompt", "schema", "policy"):
+                    path = getattr(args, flag)
+                    if path:
+                        arguments.extend([f"--{flag}", str(path.resolve())])
+                arguments.extend(["retry", "--document", attempt.document.document_id])
+                result["retry_arguments"] = arguments
+                result["error"] = result["error"].split(". Retry:", 1)[0] + ". Retry: access-requests " + shlex.join(arguments)
             result = store.complete(attempt, result)
             if (result.get("error_kind") not in ("timeout", "unavailable", "rate_limit")
                     or index + 1 == args.attempts):

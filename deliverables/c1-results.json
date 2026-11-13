@@ -1,0 +1,97 @@
+{
+  "check": "C1",
+  "passed": true,
+  "runtime": "3.12.3",
+  "platform": "Linux",
+  "response_source": "mock",
+  "configuration": "tests/mock_responses/evaluation-config.json, workers=4, default request settings",
+  "workspace": "/tmp/access-requests-c1-lgja11_r",
+  "documents": 21,
+  "scalar_matches": 252,
+  "commands": [
+    {
+      "arguments": [
+        "intake",
+        "/home/user/ai-full-stack-it-access-requests/materials/requests",
+        "--workers",
+        "4"
+      ],
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "intake",
+        "/home/user/ai-full-stack-it-access-requests/materials/paraphrases"
+      ],
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "queue"
+      ],
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "pending"
+      ],
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "resume"
+      ],
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "history",
+        "--document",
+        "IT-002.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "retry",
+        "--document",
+        "IT-002.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "history",
+        "--document",
+        "IT-002.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "export",
+        "/tmp/access-requests-c1-lgja11_r/outputs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "accuracy",
+        "--records",
+        "/tmp/access-requests-c1-lgja11_r/outputs/generations/9943aea2b3604d4491898623f9e6f03f/extractions.jsonl",
+        "--expected",
+        "/home/user/ai-full-stack-it-access-requests/deliverables/expected-fields.json",
+        "--rules",
+        "/home/user/ai-full-stack-it-access-requests/deliverables/accuracy-rules.json",
+        "--sources",
+        "/home/user/ai-full-stack-it-access-requests/materials/requests",
+        "--paraphrase",
+        "/home/user/ai-full-stack-it-access-requests/materials/paraphrases/IT-021.json",
+        "--report",
+        "/tmp/access-requests-c1-lgja11_r/accuracy.md"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "limits": "No live provider calls, cross-host tests or facilitator submission verification"
+}
