@@ -1,0 +1,3 @@
+<send_user_message_question_reply>
+[{"answer":"Use these D5 rules","question":"For Step 9’s D5 accuracy rules, may I use the 12 scalar fields for each of the 20 supplied messages plus the authored paraphrase (252 comparisons)? Compare strings exactly, with no case/whitespace/date normalization; a successful explicit null matches only an expected null. A missing document, missing field, invalid extraction, or failed extraction counts as incorrect (all 12 fields for a failed/invalid record), even where null was expected. Report factual differences and unexpected documents separately; ","questionItemId":"[\"request_user_input_async\",\"call_2fe8c88c23024a60bd66f0e8bf0b2c9b\",0]"}]
+</send_user_message_question_reply>
