@@ -26,21 +26,21 @@
     "subagent_tokens_complete": true
   },
   "redaction": {
-    "replacements": 0,
+    "replacements": 24,
     "layers": {
       "betterleaks": 0,
       "connection_string": 0,
       "credential_key": 0,
-      "credential_value": 0,
+      "credential_value": 4,
       "credentialed_uri": 0,
-      "entropy": 0,
+      "entropy": 25,
       "key_context": 0,
-      "pii": 0,
+      "pii": 2,
       "provider_token": 0,
       "shell_stdin": 0
     },
     "pii": {
-      "EMAIL": 0,
+      "EMAIL": 2,
       "IP": 0,
       "PHONE": 0
     }
