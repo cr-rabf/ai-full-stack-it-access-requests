@@ -36,7 +36,8 @@ class MockProvider:
                     raise RuntimeError(f"Mock script exhausted for {document_id}")
                 event = self.scripts[document_id].popleft()
             else:
-                event = {"reply": self.replies[document_id]}
+                selection = self.replies[document_id]
+                event = {"reply": selection} if isinstance(selection, str) else deepcopy(selection)
 
         delay = event.get("delay_seconds", 0)
         if delay:
@@ -55,5 +56,13 @@ class MockProvider:
         if not path.is_relative_to(self.fixtures_dir):
             raise ValueError("Mock response must be inside the fixture directory")
         reply = json.loads(path.read_text(encoding="utf-8"))
+        if "request_id" in event:
+            # Explicit saved-template parameterization for authored load examples;
+            # this supplies no business logic or inferred facts to real extraction.
+            import re
+            identifier = event["request_id"]
+            if not isinstance(identifier, str) or not re.fullmatch(r"[A-Za-z0-9-]+", identifier):
+                raise ValueError("Mock request_id substitution must be an identifier")
+            reply["output_text"] = reply["output_text"].replace("{{request_id}}", identifier)
         reply["response_source"] = "mock"
         return reply

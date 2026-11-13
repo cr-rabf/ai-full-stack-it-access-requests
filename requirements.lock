@@ -1,0 +1,4 @@
+# Runtime dependencies: none.
+# All application, installation and test imports use the Python standard library.
+# Supported runtime: CPython 3.10+ on Linux with local-disk SQLite and POSIX flock.
+# No pip, SDK, model package or network download is required for installation.
