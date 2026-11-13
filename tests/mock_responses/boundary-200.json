@@ -1,0 +1,5 @@
+{
+  "status": "completed",
+  "output_text": "{\"request_id\": \"IT-021\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Maya Chen\", \"team\": \"Analytics\", \"system\": \"Atlas\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"check weekly conversion dashboard totals\", \"start_date\": \"2026-10-23\", \"end_date\": \"2026-11-06\", \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"IT-021\", \"dated 2026-10-22\", \"Maya Chen\", \"Analytics team\", \"a new request\", \"let me read\", \"Atlas\", \"in staging\", \"2026-10-23\", \"2026-11-06\", \"Priya Shah is my manager\", \"check weekly conversion dashboard totals\"], \"issues\": []}",
+  "refusal": null
+}
