@@ -1,0 +1,22 @@
+{
+  "replies": {
+    "IT-001.json": "complete-001.json",
+    "IT-002.json": "complete-002.json"
+  },
+  "scripts": {
+    "IT-002.json": [
+      {
+        "error": "rate_limit",
+        "message": "Mock rate limit.",
+        "retry_after_seconds": 0
+      },
+      {
+        "error": "timeout",
+        "message": "Mock timeout."
+      },
+      {
+        "reply": "complete-002.json"
+      }
+    ]
+  }
+}
