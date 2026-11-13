@@ -1,0 +1,193 @@
+Create a planning/validation.md file with one row per line of planning/spec.md. Create columns for Spec Line, Requirement, Met or not met, Evidence, and Note. Fill in the first two columns. I will fill in the remaining three.
+
+---
+
+I will review validation.md and ask questions about things listed in there. Be prepared to answer questions related to it.
+
+---
+
+Regarding R01, where is the runnable application and source code in this repo?
+
+---
+
+are the contents of access_requests the entire set of cource code?
+
+---
+
+rename access_requirements to src
+
+---
+
+in validation.md, mark the R01 line as met. Evidence is the source code (*.py) files.
+
+---
+
+On line R-01, in the notes, add that this is also noted in the README.md file
+
+---
+
+env -u API_KEY python3 -m unittest discover -s tests -v > planning/test-run.txt 2>&1
+
+---
+
+python3 -m access_requests queue
+
+---
+
+can this be changed to run as access_request instead of src? If so, what would have to change? Just tell me, don't update anything.
+
+---
+
+Implement those changes. Once done, provide me with the evidence of what was changed.
+
+---
+
+python3 -m access_request queue
+
+---
+
+Compare validatoin.md with the test-run.txt file. Are there any test result that provide evidence of a validation row? If so, list those out for me to review and verify.
+
+---
+
+Update validation.md with the results that are known. Add the passing test results in the evidence column. add the "what the assertions check" to the note column. Add Met in the met or not met column
+
+---
+
+On R-01, change evidence to be the output in the deliverables folder. Update the note to state that no live model execution is demonstrated for this exercise.
+
+---
+
+Mark R-04 and R-06 as met, for this exercise, the tests meet the criteria. Update the evidence and notes column accordingly
+
+---
+
+R-57 can be marked at Met. Human review confirmes that the outputs were as expected
+
+---
+
+In R-66 and R-67, put those as Met. Pending commit in the Evidence. And make a note that this requires a commit.
+
+---
+
+What should be checked to verify R-13?
+
+---
+
+What would a complete test of R-13 look like? Is it possible when only doing mock requests?
+
+---
+
+Mark R-13 as partially Met. Indicate the evidence that did meet the requirement and note that a full test of this requirement is not possible at this time.
+
+---
+
+What should be checked to ensure R-15 and R-53 are valid?
+
+---
+
+What is meant by a clean environment and how would I set up a clean environment to test the install?
+
+---
+
+run those first 3 commands for me
+
+---
+
+install the application
+
+---
+
+cd to $test_dir
+
+---
+
+process the 20 supplied messages
+
+---
+
+run the step to inspect the resulting queue
+
+---
+
+Mark R-15 and R-53 as Met. Evidence is that following documentation resulted in successful install and processsing results.
+
+---
+
+What can be checked to verify R-27
+
+---
+
+Create a stronger R-27 check
+
+---
+
+Update R-27s validation status
+
+---
+
+What should be checked to validate R51
+
+---
+
+Mark 51 as partially met due to operation against a live provider is still unverified
+
+---
+
+What can be checked to verify R52
+
+---
+
+Mark R52 as met, add to existing evidence that human review of src/provider.py verified the requirement
+
+---
+
+Although not submitted yet, scan the repository and see if the files exist to meet R-54
+
+---
+
+Change R54 to met and indicate that all files exist. In the evidence, list thier location
+
+---
+
+what can be checked to validate r58
+
+---
+
+run that command so I can review
+
+---
+
+Mark R58 as met after further review
+
+---
+
+what can be checked to verify r60
+
+---
+
+update verification.md to reflect the 48 tests
+
+---
+
+update R60 to met after human review
+
+---
+
+What can be checked for R63
+
+---
+
+How would the documentation accurately explain the boundaries?
+
+---
+
+Mark R63 as verified after human review
+
+---
+
+What can be checked for R64
+
+---
+
+Mark R4 as met, but note that live-provider execution has not occured
