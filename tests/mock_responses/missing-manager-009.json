@@ -1,0 +1,5 @@
+{
+  "status": "completed",
+  "output_text": "{\"request_id\": \"IT-009\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Isla Morgan\", \"team\": \"Support\", \"system\": \"Beacon\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"go through example support cases before updating our troubleshooting guide\", \"start_date\": \"2026-10-26\", \"end_date\": \"2026-10-29\", \"manager\": null, \"supporting_quotes\": [\"IT-009\", \"2026-10-22\", \"new\", \"Isla Morgan\", \"Support\", \"Beacon\", \"staging\", \"read\", \"go through example support cases before updating our troubleshooting guide\", \"2026-10-26\", \"2026-10-29\", \"I've captured the questions in a document.\"], \"issues\": [\"Missing or unresolved manager.\"]}",
+  "refusal": null
+}

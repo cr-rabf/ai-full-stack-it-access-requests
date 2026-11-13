@@ -1,0 +1,5 @@
+{
+  "status": "completed",
+  "output_text": "{\"request_id\": \"IT-002\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Owen Reed\", \"team\": \"Payments\", \"system\": \"Ledger\", \"environment\": \"production\", \"permission\": \"write\", \"business_purpose\": \"make the corrections at the time of our scheduled maintenance and then check the totals against the settlement report\", \"start_date\": \"2026-10-24\", \"end_date\": \"2026-10-25\", \"manager\": \"Elena Park\", \"supporting_quotes\": [\"IT-002\", \"2026-10-22\", \"new\", \"Owen Reed\", \"Payments\", \"Ledger\", \"production\", \"write\", \"make the corrections at the time of our scheduled maintenance and then check the totals against the settlement report\", \"2026-10-24\", \"2026-10-25\", \"Elena Park\"], \"issues\": []}",
+  "refusal": null
+}

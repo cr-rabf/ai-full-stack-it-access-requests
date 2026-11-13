@@ -1,0 +1,5 @@
+{
+  "status": "completed",
+  "output_text": "{\"request_id\": \"IT-005\", \"request_date\": \"2026-10-22\", \"kind\": \"withdrawal\", \"requester\": \"Ava Brooks\", \"team\": \"Design\", \"system\": null, \"environment\": null, \"permission\": null, \"business_purpose\": \"The project that triggered my request has been cancelled so now there is no work for me to do.\", \"start_date\": null, \"end_date\": null, \"manager\": \"Elena Park\", \"supporting_quotes\": [\"IT-005\", \"2026-10-22\", \"withdraw IT-005\", \"Ava Brooks\", \"Design\", \"Could you please withdraw IT-005? Date: 2026-10-22\", \"The project that triggered my request has been cancelled so now there is no work for me to do.\", \"Elena Park\"], \"issues\": [\"Missing or unresolved system.\", \"Missing or unresolved environment.\", \"Missing or unresolved permission.\", \"Missing or unresolved start_date.\", \"Missing or unresolved end_date.\"]}",
+  "refusal": null
+}

@@ -1,0 +1,5 @@
+{
+  "status": "completed",
+  "output_text": "{\"request_id\": \"IT-003\", \"request_date\": \"2026-10-22\", \"kind\": \"new\", \"requester\": \"Lina Gomez\", \"team\": \"Customer Success\", \"system\": \"Beacon\", \"environment\": null, \"permission\": null, \"business_purpose\": \"customer renewal review\", \"start_date\": null, \"end_date\": null, \"manager\": \"Priya Shah\", \"supporting_quotes\": [\"IT-003\", \"2026-10-22\", \"new\", \"Lina Gomez\", \"Customer Success\", \"Beacon\", \"I didn't note what environment he was on or what the permission is named\", \"customer renewal review\", \"Priya Shah\", \"The same access Sam has.\", \"next week\"], \"issues\": [\"Missing or unresolved environment.\", \"Missing or unresolved permission.\", \"Missing or unresolved start_date.\", \"Missing or unresolved end_date.\"]}",
+  "refusal": null
+}

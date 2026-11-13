@@ -1,0 +1,5 @@
+{
+  "status": "completed",
+  "output_text": "{\"request_id\": \"IT-017\", \"request_date\": \"2026-10-22\", \"kind\": \"other\", \"requester\": \"Chloe Martin\", \"team\": \"Communications\", \"system\": null, \"environment\": null, \"permission\": null, \"business_purpose\": \"Where can we find the access request form?\", \"start_date\": null, \"end_date\": null, \"manager\": null, \"supporting_quotes\": [\"IT-017\", \"2026-10-22\", \"Where can we find the access request form?\", \"Chloe Martin\", \"Communications\"], \"issues\": [\"Missing or unresolved system.\", \"Missing or unresolved environment.\", \"Missing or unresolved permission.\", \"Missing or unresolved start_date.\", \"Missing or unresolved end_date.\", \"Missing or unresolved manager.\"]}",
+  "refusal": null
+}

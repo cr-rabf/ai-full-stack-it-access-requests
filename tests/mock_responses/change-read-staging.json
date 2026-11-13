@@ -1,0 +1,5 @@
+{
+  "status": "completed",
+  "output_text": "{\"request_id\": \"IT-007\", \"request_date\": \"2026-10-22\", \"kind\": \"change\", \"requester\": \"Grace Tan\", \"team\": \"Developer Experience\", \"system\": \"Forge\", \"environment\": \"staging\", \"permission\": \"read\", \"business_purpose\": \"updating starter project templates\", \"start_date\": \"2026-10-24\", \"end_date\": \"2026-10-28\", \"manager\": \"Nia Patel\", \"supporting_quotes\": [\"IT-007\", \"2026-10-22\", \"would like to transition to (read)\", \"Grace Tan\", \"Developer Experience\", \"Forge\", \"staging\", \"read\", \"updating starter project templates\", \"2026-10-24\", \"2026-10-28\", \"Nia Patel\"], \"issues\": []}",
+  "refusal": null
+}
