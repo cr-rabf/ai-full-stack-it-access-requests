@@ -1,6 +1,8 @@
 """T27: parse, compare and reproduce handover artifacts with saved mock replies."""
 import json
+import io
 from pathlib import Path
+import tempfile
 import unittest
 from unittest import mock
 
@@ -51,3 +53,17 @@ class VerificationContract(unittest.TestCase):
             saved = committed[record["document_id"]]
             for field in ("source_sha256", "extraction", "status", "owner", "next_action", "error", "response_source"):
                 self.assertEqual(saved[field], record[field], (record["document_id"], field))
+
+        # Retry guidance must retain a nondefault database and mocked provider;
+        # otherwise copying it would target different state or a real model.
+        from access_requests.cli import main
+        with tempfile.TemporaryDirectory() as directory:
+            arguments = ["--db", str(Path(directory) / "state.sqlite3"), "--mock-config",
+                         str(MOCKS / "cli-outage.json"), "intake", str(ROOT / "materials/requests/IT-002.json")]
+            output = io.StringIO()
+            with mock.patch("sys.stdout", output):
+                self.assertEqual(main(arguments), 1)
+            failure, = json.loads(output.getvalue())
+            self.assertEqual(failure["retry_arguments"], arguments[:4] + ["retry", "--document", "IT-002.json"])
+            with mock.patch("sys.stdout", io.StringIO()):
+                self.assertEqual(main(failure["retry_arguments"]), 1)
