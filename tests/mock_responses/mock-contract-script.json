@@ -1,0 +1,10 @@
+{
+  "IT-001.json": [
+    {"reply": "complete-001.json"},
+    {"reply": "complete-001.json", "delay_seconds": 2},
+    {"error": "unavailable", "message": "Mock provider unavailable."},
+    {"reply": "refusal.json"},
+    {"error": "interruption", "message": "Mock request interrupted."},
+    {"reply": "complete-001.json"}
+  ]
+}
